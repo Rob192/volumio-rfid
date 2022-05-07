@@ -7,7 +7,7 @@ PLAY_URL = 'http://localhost:3000/api/v1/replaceAndPlay'
 STATE_URL = 'http://localhost:3000/api/v1/getState'
 # PLAY_URL = 'http://192.168.1.95/local/api/v1/replaceAndPlay'
 # STATE_URL = 'http://192.168.1.95/local/api/v1/getState'
-NEWCARD_URL = 'https://api.airtable.com/v0/appJTWuESqyjqLY5Q/Cards'
+NEWCARD_URL = 'https://api.airtable.com/v0/appW4ARsBtRMFQ3mF/Table 1'
 PAUSE_URL = 'http://localhost:3000/api/v1/commands/?cmd=pause'
 
 SERIAL_PORT = '/dev/ttyAMA0'
@@ -68,7 +68,7 @@ def newcard(id):
         }
         payload = {
                 'fields': {
-                        'Cards': str(id)
+                        'Cards': id
                 }
         }
         r = requests.post(NEWCARD_URL,
