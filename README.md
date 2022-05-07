@@ -3,7 +3,11 @@
 Use RFID cards to control Volumio. The association between card IDs and URLs are maintained in a table in [AirTable](https://airtable.com/).
 
 ## Installation
-
+```
+apt-get update
+apt-get install gcc libffi-dev libssl-dev python3-dev raspi-config
+pip install -r requirements.txt
+```
 Create a file .env in the installation directory:
 
 ````
