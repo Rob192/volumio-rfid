@@ -106,9 +106,7 @@ if __name__ == "__main__":
         env = configparser.ConfigParser()
         env.read(INSTALL_PATH)
 
-        count_reset = 5
         last_id = None
-        count = count_reset
         try:
                 print("Waiting for a card to play")
                 while True:
@@ -116,7 +114,6 @@ if __name__ == "__main__":
 
                         id = reader.read_id_no_block()
                         if id:
-                                count = count_reset
                                 if id == last_id:
                                         continue
 
@@ -127,20 +124,14 @@ if __name__ == "__main__":
                                 if not last_id:
                                         continue
 
-                                if count > 0:
-                                        #print(" - Counting", count)
-                                        count -= 1
-                                        continue
-
-                                count = count_reset
                                 last_id = None
-                                print("Pause")
-                                try:
-                                        requests.get(PAUSE_URL,
-                                                     timeout=0.1
-                                        )
-                                except:
-                                        pass
+                                # print("Pause")
+                                # try:
+                                #         requests.get(PAUSE_URL,
+                                #                      timeout=0.1
+                                #         )
+                                # except:
+                                #         pass
 
 
         finally:
