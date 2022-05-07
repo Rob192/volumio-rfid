@@ -2,7 +2,7 @@
 Description=RFID Cards for Volumio
 
 [Service]
-ExecStart=/home/volumio/rfid/play.py
+ExecStart=/home/volumio/volumio-rfid/play.py
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=rfid
