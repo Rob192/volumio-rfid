@@ -1,0 +1,4 @@
+serial
+RPi.GPIO
+mfrc522
+requests
