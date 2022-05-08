@@ -21,6 +21,7 @@ from mfrc522 import SimpleMFRC522
 import configparser
 import requests
 import json
+from systemd.daemon import notify, Notification
 
 # knob = serial.Serial(
 #     port=SERIAL_PORT,
@@ -107,6 +108,7 @@ if __name__ == "__main__":
         env.read(INSTALL_PATH)
 
         last_id = None
+        #notify(Notification.READY)
         try:
                 print("Waiting for a card to play")
                 while True:
@@ -115,16 +117,18 @@ if __name__ == "__main__":
                         id = reader.read_id_no_block()
                         if id:
                                 if id == last_id:
+                                        print('same card')
                                         continue
-
+                                print(id)
+                                print(last_id)
                                 last_id = id
-                                print("Karte", id)
+                                print("Card", id)
                                 play(id)
-                        else:
-                                if not last_id:
-                                        continue
+                        #else:
+                        #        if not last_id:
+                        #                continue
 
-                                last_id = None
+                        #        last_id = None
                                 # print("Pause")
                                 # try:
                                 #         requests.get(PAUSE_URL,

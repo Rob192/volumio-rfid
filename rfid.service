@@ -1,10 +1,12 @@
 [Unit]
-Description=RFID Cards for Volumio
+Description=RFID service
 
 [Service]
-ExecStart=/home/volumio/volumio-rfid/play.py
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=rfid
+Type=simple
+ExecStart=/bin/bash /home/volumio/volumio-rfid/Start_rfid.sh
+Environment=PYTHONUNBUFFERED=1
 Restart=on-failure
-RestartSec=5s
+RuntimeMaxSec=infinity
+
+[Install]
+WantedBy=default.target
