@@ -115,16 +115,18 @@ if __name__ == "__main__":
                         id = reader.read_id_no_block()
                         if id:
                                 if id == last_id:
+                                        print('same card')
                                         continue
-
+                                print(id)
+                                print(last_id)
                                 last_id = id
-                                print("Karte", id)
+                                print("Card", id)
                                 play(id)
-                        else:
-                                if not last_id:
-                                        continue
+                        #else:
+                        #        if not last_id:
+                        #                continue
 
-                                last_id = None
+                        #        last_id = None
                                 # print("Pause")
                                 # try:
                                 #         requests.get(PAUSE_URL,
