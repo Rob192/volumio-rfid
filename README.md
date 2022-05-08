@@ -5,7 +5,9 @@ Use RFID cards to control Volumio. The association between card IDs and URLs are
 ## Installation
 ```
 apt-get update
-apt-get install gcc libffi-dev libssl-dev python3-dev raspi-config
+apt-get install gcc libffi-dev libssl-dev python3-dev raspi-config python3-venv
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 Create a file .env in the installation directory:
@@ -15,7 +17,26 @@ Create a file .env in the installation directory:
 apikey=key1234567890
 ````
 
-Copy the service file to /etc/systemd/system/rfid.service
+Copy the service file to /etc/systemd/system/rfid.service and activate it 
+```
+sudo cp rfid.service /etc/systemd/system/rfid.service
+sudo chmod 664 /etc/systemd/system/rfid.service
+sudo systemctl enable /etc/systemd/system/rfid.service
+sudo systemctl daemon-reload
+sudo systemctl start rfid.service
+```
+(Nice tutorial for writting services [here](https://github.com/torfsen/python-systemd-tutorial#creating-a-system-service) )
+
+Now your script will be put into service and will be started. To check for errors or not, you can run this command:
+```
+sudo service rfid status
+```
+
+To stop the script, you can run the command:
+```
+sudo service rfid stop
+```
+
 
 ## Further information
 
